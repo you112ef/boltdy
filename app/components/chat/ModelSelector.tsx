@@ -277,7 +277,7 @@ export const ModelSelector = ({
                   aria-label="Search providers"
                 />
                 <div className="absolute left-2.5 top-1/2 -translate-y-1/2">
-                  <span className="i-ph:magnifying-glass text-bolt-elements-textTertiary" />
+                  <span className="i-ph:magnifying-glass text-bolt-elements-textTertiary text-sm" /> {/* Added text-sm */}
                 </div>
               </div>
             </div>
@@ -404,7 +404,7 @@ export const ModelSelector = ({
                   aria-label="Search models"
                 />
                 <div className="absolute left-2.5 top-1/2 -translate-y-1/2">
-                  <span className="i-ph:magnifying-glass text-bolt-elements-textTertiary" />
+                  <span className="i-ph:magnifying-glass text-bolt-elements-textTertiary text-sm" /> {/* Added text-sm */}
                 </div>
               </div>
             </div>

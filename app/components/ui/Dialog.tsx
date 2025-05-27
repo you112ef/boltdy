@@ -40,7 +40,7 @@ export const DialogButton = memo(({ type, children, onClick, disabled }: DialogB
 export const DialogTitle = memo(({ className, children, ...props }: RadixDialog.DialogTitleProps) => {
   return (
     <RadixDialog.Title
-      className={classNames('text-lg font-medium text-bolt-elements-textPrimary flex items-center gap-2', className)}
+      className={classNames('text-base sm:text-lg font-medium text-bolt-elements-textPrimary flex items-center gap-2', className)} // Changed to text-base sm:text-lg
       {...props}
     >
       {children}
@@ -51,7 +51,7 @@ export const DialogTitle = memo(({ className, children, ...props }: RadixDialog.
 export const DialogDescription = memo(({ className, children, ...props }: RadixDialog.DialogDescriptionProps) => {
   return (
     <RadixDialog.Description
-      className={classNames('text-sm text-bolt-elements-textSecondary mt-1', className)}
+      className={classNames('text-sm text-bolt-elements-textSecondary mt-1', className)} // Kept as text-sm
       {...props}
     >
       {children}

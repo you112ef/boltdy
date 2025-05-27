@@ -11,8 +11,8 @@ const VARIANT_STYLES = {
       container: 'w-12 h-12 mb-3',
       size: 'w-6 h-6',
     },
-    title: 'text-base',
-    description: 'text-sm mt-1',
+    title: 'text-sm sm:text-base', // Changed
+    description: 'text-sm mt-1', // Kept as text-sm
     actions: 'mt-4',
     buttonSize: 'default' as const,
   },

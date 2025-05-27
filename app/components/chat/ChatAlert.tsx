@@ -83,7 +83,7 @@ export default function ChatAlert({ alert, clearAlert, postMessage }: Props) {
                     'flex items-center gap-1.5',
                   )}
                 >
-                  <div className="i-ph:chat-circle-duotone"></div>
+                  <div className="i-ph:chat-circle-duotone text-base sm:text-lg"></div> {/* Responsive icon */}
                   Ask Bolt
                 </button>
                 <button

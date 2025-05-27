@@ -327,13 +327,13 @@ export function FileIcon({ filename, size = 'md', className }: FileIconProps) {
   const getSizeClass = (size: 'sm' | 'md' | 'lg'): string => {
     switch (size) {
       case 'sm':
-        return 'w-4 h-4';
+        return 'w-3 h-3 sm:w-4 sm:h-4'; // 12px / 16px
       case 'md':
-        return 'w-5 h-5';
+        return 'w-4 h-4 sm:w-5 sm:h-5'; // 16px / 20px
       case 'lg':
-        return 'w-6 h-6';
+        return 'w-5 h-5 sm:w-6 sm:h-6'; // 20px / 24px
       default:
-        return 'w-5 h-5';
+        return 'w-4 h-4 sm:w-5 sm:h-5'; // Default to md
     }
   };
 

@@ -3,6 +3,7 @@ import type { LinksFunction } from '@remix-run/cloudflare';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import tailwindReset from '@unocss/reset/tailwind-compat.css?url';
 import { themeStore } from './lib/stores/theme';
+import { languageStore } from './lib/stores/languageStore'; // Import language store
 import { stripIndents } from './utils/stripIndent';
 import { createHead } from 'remix-island';
 import { useEffect } from 'react';
@@ -67,10 +68,16 @@ export const Head = createHead(() => (
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const theme = useStore(themeStore);
+  const language = useStore(languageStore); // Get language from store
 
   useEffect(() => {
-    document.querySelector('html')?.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+  }, [language]);
 
   return (
     <>
@@ -85,15 +92,17 @@ import { logStore } from './lib/stores/logs';
 
 export default function App() {
   const theme = useStore(themeStore);
+  const language = useStore(languageStore); // Also get language for logging if needed
 
   useEffect(() => {
     logStore.logSystem('Application initialized', {
       theme,
+      language, // Log language
       platform: navigator.platform,
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
     });
-  }, []);
+  }, [theme, language]); // Add language to dependency array
 
   return (
     <Layout>

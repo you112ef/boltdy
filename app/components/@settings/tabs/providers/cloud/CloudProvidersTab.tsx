@@ -142,12 +142,12 @@ const CloudProvidersTab = () => {
           <div className="flex items-center gap-2">
             <div
               className={classNames(
-                'w-8 h-8 flex items-center justify-center rounded-lg',
+                  'w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg', // Adjusted size
                 'bg-bolt-elements-background-depth-3',
                 'text-purple-500',
               )}
             >
-              <TbCloudComputing className="w-5 h-5" />
+                <TbCloudComputing className="w-4 h-4 sm:w-5 sm:h-5" /> {/* Adjusted size */}
             </div>
             <div>
               <h4 className="text-md font-medium text-bolt-elements-textPrimary">Cloud Providers</h4>
@@ -190,10 +190,10 @@ const CloudProvidersTab = () => {
                 )}
               </div>
 
-              <div className="flex items-start gap-4 p-4">
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4"> {/* Adjusted gap and padding */}
                 <motion.div
                   className={classNames(
-                    'w-10 h-10 flex items-center justify-center rounded-xl',
+                    'w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl', // Adjusted size
                     'bg-bolt-elements-background-depth-3 group-hover:bg-bolt-elements-background-depth-4',
                     'transition-all duration-200',
                     provider.settings.enabled ? 'text-purple-500' : 'text-bolt-elements-textSecondary',
@@ -201,7 +201,7 @@ const CloudProvidersTab = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <div className={classNames('w-6 h-6', 'transition-transform duration-200', 'group-hover:rotate-12')}>
+                  <div className={classNames('w-5 h-5 sm:w-6 sm:h-6', 'transition-transform duration-200', 'group-hover:rotate-12')}> {/* Adjusted size */}
                     {React.createElement(PROVIDER_ICONS[provider.name as ProviderName] || BsRobot, {
                       className: 'w-full h-full',
                       'aria-label': `${provider.name} logo`,
@@ -260,12 +260,12 @@ const CloudProvidersTab = () => {
                           />
                         ) : (
                           <div
-                            className="flex-1 px-3 py-1.5 rounded-lg text-sm cursor-pointer group/url"
+                            className="flex-1 px-3 py-1.5 rounded-lg text-xs sm:text-sm cursor-pointer group/url" // Adjusted text size
                             onClick={() => setEditingProvider(provider.name)}
                           >
                             <div className="flex items-center gap-2 text-bolt-elements-textSecondary">
-                              <div className="i-ph:link text-sm" />
-                              <span className="group-hover/url:text-purple-500 transition-colors">
+                              <div className="i-ph:link text-xs sm:text-sm" /> {/* Adjusted icon size */}
+                              <span className="group-hover/url:text-purple-500 transition-colors truncate"> {/* Added truncate */}
                                 {provider.settings.baseUrl || 'Click to set base URL'}
                               </span>
                             </div>
@@ -276,7 +276,7 @@ const CloudProvidersTab = () => {
                       {providerBaseUrlEnvKeys[provider.name]?.baseUrlKey && (
                         <div className="mt-2 text-xs text-green-500">
                           <div className="flex items-center gap-1">
-                            <div className="i-ph:info" />
+                            <div className="i-ph:info text-xs" /> {/* Adjusted icon size */}
                             <span>Environment URL set in .env file</span>
                           </div>
                         </div>

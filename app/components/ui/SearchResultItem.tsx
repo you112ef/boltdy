@@ -67,7 +67,7 @@ export function SearchResultItem({
             </div>
           )}
           <div>
-            <h3 className="font-medium text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary-dark text-base">
+            <h3 className="font-medium text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary-dark text-sm sm:text-base"> {/* Changed */}
               {title}
             </h3>
             {subtitle && (

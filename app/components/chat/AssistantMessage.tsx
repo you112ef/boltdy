@@ -64,27 +64,27 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
   return (
     <div className="overflow-hidden w-full">
       <>
-        <div className=" flex gap-2 items-center text-sm text-bolt-elements-textSecondary mb-2">
+        <div className="flex gap-2 items-center text-xs sm:text-sm text-bolt-elements-textSecondary mb-2"> {/* Base text-xs, sm and up is text-sm */}
           {(codeContext || chatSummary) && (
-            <Popover side="right" align="start" trigger={<div className="i-ph:info" />}>
+            <Popover side="right" align="start" trigger={<div className="i-ph:info text-base sm:text-lg" />}> {/* Icon size adjustment */}
               {chatSummary && (
-                <div className="max-w-chat">
-                  <div className="summary max-h-96 flex flex-col">
-                    <h2 className="border border-bolt-elements-borderColor rounded-md p4">Summary</h2>
-                    <div style={{ zoom: 0.7 }} className="overflow-y-auto m4">
+                <div className="max-w-chat p-2"> {/* Added padding to popover content */}
+                  <div className="summary max-h-96 flex flex-col gap-1"> {/* Added gap */}
+                    <h2 className="border border-bolt-elements-borderColor rounded-md p-2 text-sm sm:text-base font-medium">Summary</h2> {/* Adjusted padding and text size */}
+                    <div className="overflow-y-auto m-1 text-xs sm:text-sm"> {/* Adjusted margin and text size, removed zoom */}
                       <Markdown>{chatSummary}</Markdown>
                     </div>
                   </div>
                   {codeContext && (
-                    <div className="code-context flex flex-col p4 border border-bolt-elements-borderColor rounded-md">
-                      <h2>Context</h2>
-                      <div className="flex gap-4 mt-4 bolt" style={{ zoom: 0.6 }}>
+                    <div className="code-context flex flex-col p-2 mt-2 border border-bolt-elements-borderColor rounded-md gap-1"> {/* Adjusted padding, margin, added gap */}
+                      <h2 className="text-sm sm:text-base font-medium">Context</h2> {/* Adjusted text size */}
+                      <div className="flex flex-wrap gap-2 mt-1"> {/* flex-wrap and smaller gap, removed zoom and custom 'bolt' class if unused */}
                         {codeContext.map((x) => {
                           const normalized = normalizedFilePath(x);
                           return (
                             <Fragment key={normalized}>
                               <code
-                                className="bg-bolt-elements-artifacts-inlineCode-background text-bolt-elements-artifacts-inlineCode-text px-1.5 py-1 rounded-md text-bolt-elements-item-contentAccent hover:underline cursor-pointer"
+                                className="bg-bolt-elements-artifacts-inlineCode-background text-bolt-elements-artifacts-inlineCode-text px-1.5 py-0.5 text-2xs sm:text-xs rounded-md hover:underline cursor-pointer" // Adjusted padding and text size
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
@@ -106,18 +106,18 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
           )}
           <div className="flex w-full items-center justify-between">
             {usage && (
-              <div>
+              <div className="text-2xs sm:text-xs"> {/* Adjusted token usage text size */}
                 Tokens: {usage.totalTokens} (prompt: {usage.promptTokens}, completion: {usage.completionTokens})
               </div>
             )}
             {(onRewind || onFork) && messageId && (
-              <div className="flex gap-2 flex-col lg:flex-row ml-auto">
+              <div className="flex gap-2 flex-col lg:flex-row ms-auto"> {/* Changed ml-auto to ms-auto for RTL */}
                 {onRewind && (
                   <WithTooltip tooltip="Revert to this message">
                     <button
                       onClick={() => onRewind(messageId)}
                       key="i-ph:arrow-u-up-left"
-                      className="i-ph:arrow-u-up-left text-xl text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary transition-colors"
+                      className="i-ph:arrow-u-up-left text-lg sm:text-xl text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary transition-colors" // Adjusted icon size
                     />
                   </WithTooltip>
                 )}
@@ -126,7 +126,7 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
                     <button
                       onClick={() => onFork(messageId)}
                       key="i-ph:git-fork"
-                      className="i-ph:git-fork text-xl text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary transition-colors"
+                      className="i-ph:git-fork text-lg sm:text-xl text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary transition-colors" // Adjusted icon size
                     />
                   </WithTooltip>
                 )}

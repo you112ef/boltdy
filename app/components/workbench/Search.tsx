@@ -187,7 +187,7 @@ export function Search() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search"
-            className="w-full px-2 py-1 rounded-md bg-bolt-elements-background-depth-3 text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary focus:outline-none transition-all"
+            className="w-full px-2 py-1 rounded-md bg-bolt-elements-background-depth-3 text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary focus:outline-none transition-all text-sm" {/* Added text-sm */}
           />
         </div>
       </div>
@@ -195,12 +195,12 @@ export function Search() {
       {/* Results */}
       <div className="flex-1 overflow-auto py-2">
         {isSearching && (
-          <div className="flex items-center justify-center h-32 text-bolt-elements-textTertiary">
+          <div className="flex items-center justify-center h-32 text-bolt-elements-textTertiary text-sm"> {/* Added text-sm */}
             <div className="i-ph:circle-notch animate-spin mr-2" /> Searching...
           </div>
         )}
         {!isSearching && hasSearched && searchResults.length === 0 && searchQuery.trim() !== '' && (
-          <div className="flex items-center justify-center h-32 text-gray-500">No results found.</div>
+          <div className="flex items-center justify-center h-32 text-gray-500 text-sm">No results found.</div> {/* Added text-sm */}
         )}
         {!isSearching &&
           Object.keys(groupedResults).map((file) => (

@@ -68,7 +68,7 @@ export const Markdown = memo(({ children, html = false, limitedMarkdown = false 
   return (
     <ReactMarkdown
       allowedElements={allowedHTMLElements}
-      className={styles.MarkdownContent}
+      className={`${styles.MarkdownContent} text-sm sm:text-base`} // Added responsive base font size
       components={components}
       remarkPlugins={remarkPlugins(limitedMarkdown)}
       rehypePlugins={rehypePlugins(html)}

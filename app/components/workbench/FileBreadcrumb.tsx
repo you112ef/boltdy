@@ -70,7 +70,7 @@ export const FileBreadcrumb = memo<FileBreadcrumbProps>(({ files, pathSegments =
   }
 
   return (
-    <div className="flex">
+    <div className="flex text-sm"> {/* Added base text-sm */}
       {pathSegments.map((segment, index) => {
         const isLast = index === pathSegments.length - 1;
 
@@ -97,11 +97,11 @@ export const FileBreadcrumb = memo<FileBreadcrumbProps>(({ files, pathSegments =
                   })}
                   onClick={() => handleSegmentClick(index)}
                 >
-                  {isLast && <div className="i-ph:file-duotone" />}
+                  {isLast && <div className="i-ph:file-duotone me-1" />} {/* Added me-1 for spacing */}
                   {segment}
                 </span>
               </DropdownMenu.Trigger>
-              {index > 0 && !isLast && <span className="i-ph:caret-right inline-block mx-1" />}
+              {index > 0 && !isLast && <span className="i-ph:caret-right inline-block mx-1 text-xs" />} {/* Adjusted icon size */}
               <AnimatePresence>
                 {isActive && (
                   <DropdownMenu.Portal>
