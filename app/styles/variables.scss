@@ -112,7 +112,7 @@
   --bolt-elements-borderColor: theme('colors.alpha.white.10');
   --bolt-elements-borderColorActive: theme('colors.accent.500');
 
-  --bolt-elements-bg-depth-1: theme('colors.gray.950');
+  --bolt-elements-bg-depth-1: #1C2526;
   --bolt-elements-bg-depth-2: theme('colors.gray.900');
   --bolt-elements-bg-depth-3: theme('colors.gray.800');
   --bolt-elements-bg-depth-4: theme('colors.alpha.white.5');
@@ -124,9 +124,12 @@
   --bolt-elements-code-background: theme('colors.gray.800');
   --bolt-elements-code-text: theme('colors.white');
 
-  --bolt-elements-button-primary-background: theme('colors.alpha.accent.10');
+  --neon-purple: #8B5CF6;
+  --neon-blue: #3B82F6;
+
+  --bolt-elements-button-primary-background: var(--neon-purple);
   --bolt-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
-  --bolt-elements-button-primary-text: theme('colors.accent.500');
+  --bolt-elements-button-primary-text: #FFFFFF;
 
   --bolt-elements-button-secondary-background: theme('colors.alpha.white.5');
   --bolt-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');

@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ClientOnly } from 'remix-utils/client-only';
+import { BottomNavBar } from './components/navigation/BottomNavBar'; // Import BottomNavBar
 
 import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css?url';
 import globalStyles from './styles/index.scss?url';
@@ -70,11 +71,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.querySelector('html')?.setAttribute('data-theme', theme);
+    // document.querySelector('html')?.setAttribute('data-lang', 'ar'); // Reverted temporary RTL setting
   }, [theme]);
 
   return (
     <>
-      <ClientOnly>{() => <DndProvider backend={HTML5Backend}>{children}</DndProvider>}</ClientOnly>
+      <ClientOnly>
+        {() => (
+          <DndProvider backend={HTML5Backend}>
+            <div className="app-container flex flex-col min-h-screen"> {/* Added app-container and flex structure */}
+              <main className="flex-grow"> {/* Main content area */}
+                {children}
+              </main>
+              <BottomNavBar /> {/* Render BottomNavBar here */}
+            </div>
+          </DndProvider>
+        )}
+      </ClientOnly>
       <ScrollRestoration />
       <Scripts />
     </>

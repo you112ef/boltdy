@@ -23,6 +23,7 @@ import { TAB_LABELS, DEFAULT_TAB_CONFIG } from './constants';
 import { DialogTitle } from '~/components/ui/Dialog';
 import { AvatarDropdown } from './AvatarDropdown';
 import BackgroundRays from '~/components/ui/BackgroundRays';
+import { MdSettings, MdPalette, MdAutoAwesome } from 'react-icons/md';
 
 // Import all tab components
 import ProfileTab from '~/components/@settings/tabs/profile/ProfileTab';
@@ -524,21 +525,36 @@ export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
                         animate="visible"
                       >
                         <AnimatePresence mode="popLayout">
-                          {(visibleTabs as TabWithDevType[]).map((tab: TabWithDevType) => (
-                            <motion.div key={tab.id} layout variants={itemVariants} className="aspect-[1.5/1]">
-                              <TabTile
-                                tab={tab}
-                                onClick={() => handleTabClick(tab.id as TabType)}
-                                isActive={activeTab === tab.id}
-                                hasUpdate={getTabUpdateStatus(tab.id)}
-                                statusMessage={getStatusMessage(tab.id)}
-                                description={TAB_DESCRIPTIONS[tab.id]}
-                                isLoading={loadingTab === tab.id}
-                                className="h-full relative"
+                          {SECTIONS.map((section) => (
+                            <div key={section.title} className="mb-6">
+                              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+                                <span className="mr-2">{section.icon}</span>
+                                {section.title}
+                              </h2>
+                              <motion.div
+                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative"
+                                variants={gridLayoutVariants}
                               >
-                                {BETA_TABS.has(tab.id) && <BetaLabel />}
-                              </TabTile>
-                            </motion.div>
+                                {(visibleTabs as TabWithDevType[])
+                                  .filter((tab) => section.tabs.includes(tab.id as TabType))
+                                  .map((tab: TabWithDevType) => (
+                                    <motion.div key={tab.id} layout variants={itemVariants} className="aspect-[1.5/1]">
+                                      <TabTile
+                                        tab={tab}
+                                        onClick={() => handleTabClick(tab.id as TabType)}
+                                        isActive={activeTab === tab.id}
+                                        hasUpdate={getTabUpdateStatus(tab.id)}
+                                        statusMessage={getStatusMessage(tab.id)}
+                                        description={TAB_DESCRIPTIONS[tab.id]}
+                                        isLoading={loadingTab === tab.id}
+                                        className="h-full relative"
+                                      >
+                                        {BETA_TABS.has(tab.id) && <BetaLabel />}
+                                      </TabTile>
+                                    </motion.div>
+                                  ))}
+                              </motion.div>
+                            </div>
                           ))}
                         </AnimatePresence>
                       </motion.div>
@@ -553,3 +569,21 @@ export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
     </RadixDialog.Root>
   );
 };
+
+const SECTIONS = [
+  {
+    title: 'General',
+    icon: <MdSettings />,
+    tabs: ['profile', 'connection', 'data', 'notifications', 'update', 'task-manager'] as TabType[],
+  },
+  {
+    title: 'Appearance',
+    icon: <MdPalette />,
+    tabs: ['settings'] as TabType[],
+  },
+  {
+    title: 'AI',
+    icon: <MdAutoAwesome />,
+    tabs: ['features', 'debug', 'event-logs', 'cloud-providers', 'local-providers', 'service-status'] as TabType[],
+  },
+];

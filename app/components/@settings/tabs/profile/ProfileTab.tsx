@@ -120,7 +120,7 @@ export default function ProfileTab() {
               <label className="block text-base font-medium text-gray-900 dark:text-gray-100 mb-1">
                 Profile Picture
               </label>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Upload a profile picture or avatar</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 text-reduced-20">Upload a profile picture or avatar</p>
             </div>
           </div>
 

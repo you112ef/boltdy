@@ -32,8 +32,10 @@ const BASE_COLORS = {
     700: '#404040',
     800: '#262626',
     900: '#171717',
-    950: '#0A0A0A',
+    950: '#1C2526',
   },
+  neonPurple: '#8B5CF6',
+  neonBlue: '#3B82F6',
   accent: {
     50: '#F8F5FF',
     100: '#F0EBFF',

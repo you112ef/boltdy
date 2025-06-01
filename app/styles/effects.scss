@@ -1,0 +1,24 @@
+.effect-blur {
+  filter: blur(8px);
+}
+
+.effect-glow-purple {
+  box-shadow: 0 0 4px var(--neon-purple);
+}
+
+.effect-glow-blue {
+  box-shadow: 0 0 4px var(--neon-blue);
+}
+
+.effect-shadow {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-reduced-20 {
+  font-size: 80%;
+}
+
+.element-reduced-20 {
+  transform: scale(0.8);
+  transform-origin: left;
+}

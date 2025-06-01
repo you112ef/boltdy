@@ -191,7 +191,7 @@ export default function SettingsTab() {
           <div className="flex items-center justify-between p-2 rounded-lg bg-[#FAFAFA] dark:bg-[#1A1A1A]">
             <div className="flex flex-col">
               <span className="text-sm text-bolt-elements-textPrimary">Toggle Theme</span>
-              <span className="text-xs text-bolt-elements-textSecondary">Switch between light and dark mode</span>
+              <span className="text-xs text-bolt-elements-textSecondary text-reduced-20">Switch between light and dark mode</span>
             </div>
             <div className="flex items-center gap-1">
               <kbd className="px-2 py-1 text-xs font-semibold text-bolt-elements-textSecondary bg-white dark:bg-[#0A0A0A] border border-[#E5E5E5] dark:border-[#1A1A1A] rounded shadow-sm">

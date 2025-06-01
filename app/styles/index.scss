@@ -1,6 +1,7 @@
 @use 'variables.scss';
 @use 'z-index.scss';
 @use 'animations.scss';
+@use 'effects.scss';
 @use 'components/terminal.scss';
 @use 'components/resize-handle.scss';
 @use 'components/code.scss';
@@ -11,7 +12,86 @@ html,
 body {
   height: 100%;
   width: 100%;
+  overflow-x: hidden; // Prevent horizontal scroll on body
 }
+
+body {
+  min-height: 100vh;
+  display: flex; // Ensure body takes full height for flex children
+  flex-direction: column; // Stack elements like <Outlet> vertically
+}
+
+// This class can be applied to the direct child of body if needed,
+// or to major layout sections within routes.
+.app-container {
+  flex-grow: 1; // Ensure it expands to fill available space in body
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-content-area { // A generic class for main content sections within app-container or other layouts
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; // Mobile-first: stack content
+  width: 100%;
+  // max-width: 100%; // Max-width can be handled by specific containers if needed
+  overflow-x: hidden; // Prevent horizontal scroll in content areas
+}
+
+// Add padding to the main content area to avoid overlap with BottomNavBar
+.app-container > main.flex-grow {
+  padding-bottom: 56px; // Height of the BottomNavBar
+}
+
+// Tablet and up: allow row layout if desired by specific components
+@media (min-width: 768px) {
+  .main-content-area.tablet-row { // If a main content area should switch to row on tablets
+    flex-direction: row;
+  }
+}
+
+// General image/media responsiveness
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+html[data-lang="ar"] {
+  direction: rtl;
+}
+
+html[data-lang="ar"] body {
+  /* Add base text-align if most text should be right-aligned by default in RTL */
+  /* text-align: right; */
+}
+
+/* RTL Text Alignment Overrides */
+html[data-lang="ar"] .text-left {
+  text-align: right !important;
+}
+
+html[data-lang="ar"] .text-right {
+  text-align: left !important;
+}
+
+/* Consider adding for other alignments if they exist and need flipping, e.g., .text-center remains center */
+
+/* RTL Spacing Overrides (examples, ideally utility framework handles this) */
+html[data-lang="ar"] .mr-1 { margin-right: 0 !important; margin-left: 0.25rem !important; }
+html[data-lang="ar"] .ml-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+html[data-lang="ar"] .mr-2 { margin-right: 0 !important; margin-left: 0.5rem !important; }
+html[data-lang="ar"] .ml-2 { margin-left: 0 !important; margin-right: 0.5rem !important; }
+/* Add more as needed for pl, pr, etc. if they aren't logical by default */
+/* For padding:
+html[data-lang="ar"] .pr-1 { padding-right: 0 !important; padding-left: 0.25rem !important; }
+html[data-lang="ar"] .pl-1 { padding-left: 0 !important; padding-right: 0.25rem !important; }
+*/
+
+/* RTL Positioning Overrides */
+html[data-lang="ar"] .right-3 { right: auto !important; left: 0.75rem !important; }
+html[data-lang="ar"] .left-3 { left: auto !important; right: 0.75rem !important; }
+/* Add more for other specific values (e.g., .right-0, .left-4) if needed */
 
 :root {
   --gradient-opacity: 0.8;

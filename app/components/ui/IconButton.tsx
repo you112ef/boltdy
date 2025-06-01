@@ -46,7 +46,7 @@ export const IconButton = memo(
         <button
           ref={ref}
           className={classNames(
-            'flex items-center text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed focus:outline-none',
+            'flex items-center justify-center text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed focus:outline-none w-12 h-12 min-w-[48px] min-h-[48px]', // Added w-12 h-12 (48px) and justify-center
             {
               [classNames('opacity-30', disabledClassName)]: disabled,
             },
