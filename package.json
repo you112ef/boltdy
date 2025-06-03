@@ -39,7 +39,13 @@
     "electron:build:mac": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mac",
     "electron:build:win": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --win",
     "electron:build:linux": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --linux",
-    "electron:build:dist": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mwl"
+    "electron:build:dist": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mwl",
+    "android:prepare": "npm run build && npx cap add android",
+    "android:build": "npm run build && npx cap copy && npx cap sync",
+    "android:open": "npx cap open android",
+    "android:run": "npm run android:build && npm run android:open",
+    "cap:sync": "npx cap sync",
+    "cap:copy": "npx cap copy"
   },
   "engines": {
     "node": ">=18.18.0"

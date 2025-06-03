@@ -1,6 +1,7 @@
 @use 'variables.scss';
 @use 'z-index.scss';
 @use 'animations.scss';
+@use 'mobile.scss';
 @use 'components/terminal.scss';
 @use 'components/resize-handle.scss';
 @use 'components/code.scss';
@@ -11,6 +12,19 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  html {
+    font-size: clamp(0.75rem, 4vw, 0.875rem);
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
 }
 
 :root {

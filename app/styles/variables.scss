@@ -220,12 +220,26 @@
  * Hierarchy: Element Token -> (Element Token | Color Tokens) -> Primitives
  */
 :root {
-  --header-height: 54px;
-  --chat-max-width: 35rem;
-  --chat-min-width: 575px;
-  --workbench-width: min(calc(100% - var(--chat-min-width)), 2536px);
+  --header-height: clamp(3rem, 4vw, 3.375rem);
+  --chat-max-width: clamp(20rem, 90vw, 35rem);
+  --chat-min-width: clamp(18rem, 50vw, 35.9375rem);
+  --workbench-width: min(calc(100% - var(--chat-min-width)), 158.5rem);
   --workbench-inner-width: var(--workbench-width);
   --workbench-left: calc(100% - var(--workbench-width));
+  
+  /* Mobile-specific variables */
+  --mobile-padding: clamp(0.75rem, 4vw, 1.5rem);
+  --mobile-font-scale: clamp(0.875rem, 2.5vw, 1rem);
+  --mobile-touch-target: clamp(2.75rem, 12vw, 3rem);
+  
+  /* Safe area insets for mobile devices */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  
+  /* Viewport height for mobile browsers */
+  --vh: 1vh;
 
   /* Toasts */
   --toastify-color-progress-success: var(--bolt-elements-icon-success);

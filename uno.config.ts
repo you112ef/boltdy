@@ -104,6 +104,13 @@ export default defineConfig({
     'transition-theme': 'transition-[background-color,border-color,color] duration-150 bolt-ease-cubic-bezier',
     kdb: 'bg-bolt-elements-code-background text-bolt-elements-code-text py-1 px-1.5 rounded-md',
     'max-w-chat': 'max-w-[var(--chat-max-width)]',
+    'mobile-container': 'px-[var(--mobile-padding)] mx-auto w-full',
+    'mobile-touch': 'min-h-[var(--mobile-touch-target)] min-w-[var(--mobile-touch-target)]',
+    'responsive-text': 'text-[var(--mobile-font-scale)]',
+    'mobile-responsive': 'text-sm sm:text-base md:text-lg',
+    'mobile-padding': 'p-2 sm:p-4 md:p-6',
+    'mobile-margin': 'm-2 sm:m-4 md:m-6',
+    'mobile-gap': 'gap-2 sm:gap-4 md:gap-6',
   },
   rules: [
     /**
@@ -113,6 +120,21 @@ export default defineConfig({
     ['b', {}],
   ],
   theme: {
+    screens: {
+      'xs': '320px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    spacing: {
+      'mobile-xs': 'clamp(0.25rem, 1vw, 0.5rem)',
+      'mobile-sm': 'clamp(0.5rem, 2vw, 1rem)',
+      'mobile-md': 'clamp(0.75rem, 3vw, 1.5rem)',
+      'mobile-lg': 'clamp(1rem, 4vw, 2rem)',
+      'mobile-xl': 'clamp(1.5rem, 6vw, 3rem)',
+    },
     colors: {
       ...COLOR_PRIMITIVES,
       bolt: {
