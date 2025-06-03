@@ -1,0 +1,214 @@
+/* Mobile-first responsive styles for bolt.diy */
+
+/* Safe area support for devices with notches */
+.safe-area-support {
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left: var(--safe-area-left);
+  padding-right: var(--safe-area-right);
+}
+
+/* Full height using custom vh variable for mobile browsers */
+.mobile-full-height {
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  .pwa-mode {
+    /* Remove default browser UI adjustments when in PWA mode */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .header-pwa {
+    padding-top: calc(var(--safe-area-top) + 0.5rem);
+  }
+}
+
+/* Android specific optimizations */
+@supports (display: -webkit-box) {
+  .android-optimized {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}
+
+/* Touch-friendly interfaces */
+@media (max-width: 768px) {
+  /* Make all interactive elements touch-friendly */
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  .interactive {
+    min-height: var(--mobile-touch-target);
+    min-width: var(--mobile-touch-target);
+    padding: clamp(0.5rem, 3vw, 0.75rem) clamp(0.75rem, 4vw, 1rem);
+  }
+
+  /* Improved text scaling */
+  h1 { font-size: clamp(1.5rem, 6vw, 2.25rem); }
+  h2 { font-size: clamp(1.25rem, 5vw, 1.875rem); }
+  h3 { font-size: clamp(1.125rem, 4vw, 1.5rem); }
+  h4 { font-size: clamp(1rem, 3.5vw, 1.25rem); }
+  h5 { font-size: clamp(0.875rem, 3vw, 1.125rem); }
+  h6 { font-size: clamp(0.75rem, 2.5vw, 1rem); }
+
+  /* Mobile-specific layout adjustments */
+  .chat-container {
+    padding: var(--mobile-padding);
+    max-width: 100vw;
+  }
+
+  .workbench-mobile {
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+    position: relative;
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bolt-elements-bg-depth-1);
+    border-top: 1px solid var(--bolt-elements-borderColor);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    z-index: 1000;
+  }
+
+  /* Mobile modal and dialog improvements */
+  .mobile-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: var(--mobile-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-modal-content {
+    max-width: calc(100vw - 2 * var(--mobile-padding));
+    max-height: calc(100vh - 2 * var(--mobile-padding));
+    border-radius: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  /* Mobile form improvements */
+  .mobile-form {
+    input, textarea, select {
+      font-size: 1rem; /* Prevent zoom on iOS */
+      padding: clamp(0.75rem, 3vw, 1rem);
+      border-radius: clamp(0.25rem, 1vw, 0.5rem);
+    }
+  }
+
+  /* Mobile spacing utilities */
+  .mobile-space-y > * + * {
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .mobile-space-x > * + * {
+    margin-left: clamp(0.5rem, 2vw, 1rem);
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-layout {
+    display: grid;
+    grid-template-columns: clamp(20rem, 40vw, 25rem) 1fr;
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  .tablet-sidebar {
+    min-width: clamp(18rem, 35vw, 22rem);
+  }
+}
+
+/* Large mobile devices */
+@media (min-width: 600px) and (max-width: 768px) {
+  .large-mobile {
+    --mobile-padding: clamp(1rem, 5vw, 2rem);
+    --mobile-font-scale: clamp(0.9rem, 2.8vw, 1.1rem);
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 599px) {
+  .small-mobile {
+    --mobile-padding: clamp(0.5rem, 3vw, 1rem);
+    --mobile-font-scale: clamp(0.8rem, 2.2vw, 0.9rem);
+  }
+
+  /* Hide less important elements on very small screens */
+  .hide-on-small {
+    display: none;
+  }
+
+  /* Simplify complex layouts */
+  .simplify-on-small {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .landscape-mobile {
+    --header-height: clamp(2.5rem, 3.5vw, 3rem);
+  }
+
+  .landscape-adjust {
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-dpi {
+    /* Sharper borders and shadows */
+    border-width: 0.5px;
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .mobile-dark {
+    /* Reduce eye strain on mobile devices */
+    --bolt-elements-bg-depth-1: #0f0f0f;
+    --bolt-elements-bg-depth-2: #1a1a1a;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus management for mobile */
+@media (max-width: 768px) {
+  .mobile-focus {
+    /* Larger focus indicators for touch devices */
+    &:focus {
+      outline: 3px solid var(--bolt-elements-borderColorActive);
+      outline-offset: 2px;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--bolt-elements-borderColorActive);
+      outline-offset: 2px;
+    }
+  }
+}

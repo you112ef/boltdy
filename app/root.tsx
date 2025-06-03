@@ -39,6 +39,14 @@ export const links: LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
   },
+  {
+    rel: 'manifest',
+    href: '/manifest.json',
+  },
+  {
+    rel: 'apple-touch-icon',
+    href: '/apple-touch-icon.png',
+  },
 ];
 
 const inlineThemeCode = stripIndents`
@@ -58,7 +66,15 @@ const inlineThemeCode = stripIndents`
 export const Head = createHead(() => (
   <>
     <meta charSet="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Bolt DIY" />
+    <meta name="application-name" content="Bolt DIY" />
+    <meta name="msapplication-TileColor" content="#9C7DFF" />
+    <meta name="theme-color" content="#9C7DFF" />
+    <meta name="color-scheme" content="dark light" />
     <Meta />
     <Links />
     <script dangerouslySetInnerHTML={{ __html: inlineThemeCode }} />
@@ -82,6 +98,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 import { logStore } from './lib/stores/logs';
+import { MobileUtils } from './utils/mobile';
 
 export default function App() {
   const theme = useStore(themeStore);
@@ -93,6 +110,11 @@ export default function App() {
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
     });
+
+    // Initialize mobile utilities
+    MobileUtils.init();
+    MobileUtils.addTouchEvents();
+    MobileUtils.optimizeScrolling();
   }, []);
 
   return (
