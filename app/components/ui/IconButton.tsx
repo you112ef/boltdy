@@ -70,15 +70,18 @@ export const IconButton = memo(
 );
 
 function getIconSize(size: IconSize) {
-  if (size === 'sm') {
-    return 'text-sm';
-  } else if (size === 'md') {
-    return 'text-md';
-  } else if (size === 'lg') {
-    return 'text-lg';
-  } else if (size === 'xl') {
-    return 'text-xl';
-  } else {
-    return 'text-2xl';
+  switch (size) {
+    case 'sm':
+      return 'text-xs sm:text-sm'; // 12px -> 14px
+    case 'md':
+      return 'text-sm sm:text-base'; // 14px -> 16px
+    case 'lg':
+      return 'text-base sm:text-lg'; // 16px -> 18px
+    case 'xl':
+      return 'text-lg sm:text-xl'; // 18px -> 20px (default size for IconButton is xl)
+    case 'xxl':
+      return 'text-xl sm:text-2xl'; // 20px -> 24px
+    default:
+      return 'text-lg sm:text-xl'; // Default to xl sizing
   }
 }

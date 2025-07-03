@@ -11,7 +11,9 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={classNames(
-      'inline-flex h-10 items-center justify-center rounded-md bg-bolt-elements-background-depth-1 dark:bg-bolt-elements-background-depth-3-dark p-1 text-bolt-elements-textSecondary dark:text-bolt-elements-textSecondary-dark border border-bolt-elements-borderColor dark:border-bolt-elements-borderColor-dark',
+      'inline-flex items-center justify-center rounded-md bg-bolt-elements-background-depth-1 dark:bg-bolt-elements-background-depth-3-dark p-1 text-bolt-elements-textSecondary dark:text-bolt-elements-textSecondary-dark border border-bolt-elements-borderColor dark:border-bolt-elements-borderColor-dark',
+      'h-9 sm:h-10', // Responsive height
+      'overflow-x-auto modern-scrollbar', // Horizontal scrolling
       className,
     )}
     {...props}
@@ -26,7 +28,9 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={classNames(
-      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-bolt-elements-background dark:ring-offset-bolt-elements-background-dark transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bolt-elements-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-bolt-elements-background-depth-0 dark:data-[state=active]:bg-bolt-elements-background-depth-2-dark data-[state=active]:text-bolt-elements-textPrimary dark:data-[state=active]:text-bolt-elements-textPrimary-dark data-[state=active]:shadow-sm',
+      'inline-flex items-center justify-center whitespace-nowrap rounded-sm font-medium ring-offset-bolt-elements-background dark:ring-offset-bolt-elements-background-dark transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bolt-elements-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-bolt-elements-background-depth-0 dark:data-[state=active]:bg-bolt-elements-background-depth-2-dark data-[state=active]:text-bolt-elements-textPrimary dark:data-[state=active]:text-bolt-elements-textPrimary-dark data-[state=active]:shadow-sm',
+      'px-2 sm:px-3 py-1 sm:py-1.5', // Responsive padding
+      'text-xs sm:text-sm', // Responsive text size
       className,
     )}
     {...props}

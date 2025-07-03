@@ -113,6 +113,13 @@ export default defineConfig({
     ['b', {}],
   ],
   theme: {
+    breakpoints: {
+      'sm': '360px',
+      'md': '768px',
+      'lg': '1024px',
+      // xl: '1280px', // Default, can keep or remove if not used
+      // '2xl': '1536px', // Default, can keep or remove if not used
+    },
     colors: {
       ...COLOR_PRIMITIVES,
       bolt: {
