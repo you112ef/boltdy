@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="violetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9333ea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Lightning Bolt Icon -->
+  <g transform="translate(10, 10)">
+    <path d="M10 5 L25 5 L20 20 L30 20 L32 35 L17 35 L22 20 L12 20 Z" 
+          fill="url(#violetGradient)" 
+          filter="url(#glow)" 
+          stroke="#a855f7" 
+          stroke-width="0.5"/>
+  </g>
+  
+  <!-- "SH" Text -->
+  <g transform="translate(60, 15)">
+    <text x="0" y="25" font-family="Inter, sans-serif" font-size="28" font-weight="700" 
+          fill="#e4e4e7" filter="url(#glow)">SH</text>
+  </g>
+</svg>
