@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-  <rect width="16" height="16" rx="2" fill="#1389fd" />
-  <path d="M7.398 9.091h-3.58L10.364 2 8.602 6.909h3.58L5.636 14l1.762-4.909Z" fill="#fff" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+  <defs>
+    <linearGradient id="lightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+  </defs>
+  <path d="M25 10L15 30h8l-3 20L35 30h-8l3-20z" fill="url(#lightningGradient)" stroke="url(#lightningGradient)" stroke-width="0.5"/>
+  <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="url(#lightningGradient)">SH</text>
 </svg>

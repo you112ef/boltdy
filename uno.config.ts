@@ -47,6 +47,18 @@ const BASE_COLORS = {
     900: '#502D93',
     950: '#2D1959',
   },
+  // Violet Dark Mode Colors
+  violet: {
+    background: '#0d0d0d',
+    surface: '#1a1a1f',
+    border: '#2a2a2e',
+    primary: '#a855f7',
+    primaryHover: '#9333ea',
+    text: '#e4e4e7',
+    textSecondary: '#a1a1aa',
+    textTertiary: '#737373',
+    glow: 'rgba(168, 85, 247, 0.3)',
+  },
   green: {
     50: '#F0FDF4',
     100: '#DCFCE7',
@@ -104,6 +116,11 @@ export default defineConfig({
     'transition-theme': 'transition-[background-color,border-color,color] duration-150 bolt-ease-cubic-bezier',
     kdb: 'bg-bolt-elements-code-background text-bolt-elements-code-text py-1 px-1.5 rounded-md',
     'max-w-chat': 'max-w-[var(--chat-max-width)]',
+    // Violet theme utilities
+    'shadow-violet': 'shadow-[0_0_16px_rgba(168,85,247,0.3)]',
+    'shadow-violet-lg': 'shadow-[0_0_24px_rgba(168,85,247,0.4)]',
+    'bg-violet-glow': 'bg-violet-primary shadow-violet',
+    'border-violet-glow': 'border-violet-primary shadow-[0_0_8px_rgba(168,85,247,0.2)]',
   },
   rules: [
     /**
