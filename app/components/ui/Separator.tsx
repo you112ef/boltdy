@@ -1,22 +1,19 @@
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import React from 'react';
 import { classNames } from '~/utils/classNames';
 
 interface SeparatorProps {
-  className?: string;
   orientation?: 'horizontal' | 'vertical';
+  className?: string;
 }
 
-export const Separator = ({ className, orientation = 'horizontal' }: SeparatorProps) => {
+export function Separator({ orientation = 'horizontal', className }: SeparatorProps) {
   return (
-    <SeparatorPrimitive.Root
+    <div
       className={classNames(
-        'bg-bolt-elements-borderColor',
-        orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',
-        className,
+        'shrink-0 bg-bolt-elements-borderColor',
+        orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-full w-[1px]',
+        className
       )}
-      orientation={orientation}
     />
   );
-};
-
-export default Separator;
+}
