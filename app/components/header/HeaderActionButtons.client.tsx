@@ -11,6 +11,7 @@ import { NetlifyDeploymentLink } from '~/components/chat/NetlifyDeploymentLink.c
 import { VercelDeploymentLink } from '~/components/chat/VercelDeploymentLink.client';
 import { useVercelDeploy } from '~/components/deploy/VercelDeploy.client';
 import { useNetlifyDeploy } from '~/components/deploy/NetlifyDeploy.client';
+import { DiscussMode } from '~/components/discuss/DiscussMode';
 
 interface HeaderActionButtonsProps {}
 
@@ -31,6 +32,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
   const isStreaming = useStore(streamingState);
   const { handleVercelDeploy } = useVercelDeploy();
   const { handleNetlifyDeploy } = useNetlifyDeploy();
+  const [isDiscussModeOpen, setIsDiscussModeOpen] = useState(false);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -69,6 +71,18 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
 
   return (
     <div className="flex">
+      {/* Discuss Mode Button */}
+      <div className="mr-2">
+        <Button
+          active={isDiscussModeOpen}
+          onClick={() => setIsDiscussModeOpen(!isDiscussModeOpen)}
+          className="px-4 hover:bg-bolt-elements-item-backgroundActive flex items-center gap-2"
+        >
+          <div className="i-ph:chat-circle text-sm" />
+          Discuss
+        </Button>
+      </div>
+
       <div className="relative" ref={dropdownRef}>
         <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden mr-2 text-sm">
           <Button
@@ -172,6 +186,16 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
           <div className="i-ph:code-bold" />
         </Button>
       </div>
+
+      {/* Discuss Mode Modal */}
+      <DiscussMode
+        isOpen={isDiscussModeOpen}
+        onClose={() => setIsDiscussModeOpen(false)}
+        context={{
+          files: Object.keys(workbenchStore.files.get()),
+          currentFile: workbenchStore.selectedFile.get(),
+        }}
+      />
     </div>
   );
 }
